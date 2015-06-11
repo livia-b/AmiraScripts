@@ -80,7 +80,7 @@ proc readmhdfile {mhdfile} {
     set headerSize [expr [file size ${DataFile}] - ($x*$y*$z*2)]
     echo "filesize $DataFile is $x $y $z (header $headerSize)"
     close $fp
-	if { $headerSize >0} {
+	if { $headerSize != 0} {
 	echo "Error in computing header size  $DataFile "
 	return 0
     }
