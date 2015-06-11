@@ -3,14 +3,16 @@ Utility functions for Amira
 
 To load the script go to the Amira console and type:
 
-    source C:/<path>/mhdIO.tcl
+    source C:/path/to/file/mhdIO.tcl
 
 Then for load and save mhd files,type in the console :
-    readmhdfile  E:/file1.mhd
-    writemhd imagenamw E:/file2.mhd
+
+     readmhdfile  E:/file1.mhd
+     writemhd imagenamw E:/file2.mhd
     
 For automatically associate the metaimage file to this function, type
-   dataFile -name "MetaImage" -ext "mhd" -package hxcore -load  hxReadByTcl -loadArgs "-cmd readmhdfile"
+
+     dataFile -name "MetaImage" -ext "mhd" -package hxcore -load  hxReadByTcl -loadArgs "-cmd readmhdfile"
    
 For load these settings at every startup, modify the amira.init file in amira installation folder
 
