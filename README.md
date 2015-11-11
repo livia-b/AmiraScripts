@@ -21,4 +21,6 @@ Know issues:
  * Works only with 16 bit images
  * Does not issue a warning if the image is in a not recognized format (e.g compressed, 2D...)
  * Does not check image orientation
+ * Automatic loading fails when filepath contains a space *but typing in the console the filename between quotes works*
+     readmhdfile  "path to/file.mhd" 
  
