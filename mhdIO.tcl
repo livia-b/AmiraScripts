@@ -52,7 +52,7 @@ proc readmhdfile {mhdfile} {
         set headerSize [expr $headerSize + $thisSize]
 		#echo $line
         if { [scan $line "ElementDataFile = %s" ElementDataFile ] == 1 } {
-            break;
+            break;		
 	}  
 	    if { [scan $line "ObjectType = %s" ObjectType ] == 1 } {
             if {$ObjectType != "Image"} {
@@ -80,6 +80,9 @@ proc readmhdfile {mhdfile} {
 				set pixelType "short"
 				set pixelBytes 2
 			} elseif {$ElementType == "MET_UCHAR"} {
+			    set pixelType "byte"
+				set pixelBytes 1
+			} elseif {$ElementType == "MET_STRING"} {
 			    set pixelType "byte"
 				set pixelBytes 1
 			} else {
