@@ -20,4 +20,5 @@ Know issues:
  * Not all fields are parsed (yet)
  * Works only with 16 bit images
  * Does not issue a warning if the image is in a not recognized format (e.g compressed, 2D...)
+ * Does not check image orientation
  
