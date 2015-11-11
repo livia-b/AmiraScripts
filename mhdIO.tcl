@@ -50,8 +50,16 @@ proc readmhdfile {mhdfile} {
         set headerSize [expr $headerSize + $thisSize]
 		# $line
         if { [scan $line "ElementDataFile = %s" ElementDataFile ] == 1 } {
-            break;
+            break;		
 	}  
+		if { [scan $line "ElementType = %s" ElementType ] == 1 } {
+            if { $ElementType != "MET_SHORT"} {
+			echo "ElementType $ElementType not supported "
+			return 0
+				}
+	}  
+	
+
         #look for size
         if { [scan $line "DimSize = %d %d %d" xtmp ytmp ztmp] == 3 } {
             set x $xtmp
