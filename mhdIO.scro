@@ -1,0 +1,30 @@
+# Amira-Script-Object V3.0 
+
+#see CopyTransformation.scro and https://github.com/brosensteiner/Scripts_for_Amira/tree/master/ExtractLabels
+# The Constructor is called when a scro is created or restarted
+$this proc constructor {} { 
+  $this newPortFilename fn
+  $this fn setLabel "Output Filename"
+  $this newPortDoIt doit
+  $this script hide
+
+} 
+
+# The "compute" method is called whenever a port has changed
+$this proc compute {} {
+    # Check if the button Apply was hit. Nothing is done if it was not.
+    if { ![$this doit wasHit 0] } {
+        return
+    } 
+    
+	# If no data is specified at Data port, the message "please connect a Spatial Data" is displayed
+    set dataObject ["$this" data source]
+    if { $dataObject == "" } {
+        echo "Please connect a Spatial Data object to the Data port"
+        return
+    }
+    set fileName [$this fn getValue]
+
+  writemhdfile $dataObject $fileName 
+}
+

@@ -1,4 +1,3 @@
 source $AMIRA_ROOT/share/resources/Amira/Amira.init 0
-source /home/barazzetti/software/AmiraScripts/mhdIO.tcl
-dataFile -name "MetaImage" -ext "mhd" -package hxcore -load  hxReadByTcl -loadArgs "-cmd readmhdfile"
+source /home/barazzetti/software/AmiraScripts/mhdIO.rc
 
