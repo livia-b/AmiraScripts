@@ -1,19 +1,20 @@
+set scro ${SCRIPTDIR}/mhdIO.scro 
 source ${SCRIPTDIR}/mhdIO.tcl
 
-dataFile -name "MetaImage" \
-    -ext "mhd" \
-    -package hxcore \
-    -load  hxReadByTcl \
+dataFile -name "MetaImage" 	\
+    -ext "mhd" 				\
+    -package hxcore 		\
+    -load  hxReadByTcl 		\
     -loadArgs "-cmd readmhdfile"
-	
-set ExportMhd_scro ${SCRIPTDIR}/mhdIO.scro 
-module 	-name 		"ExportMhd" \
-		-primary	"HxUniformScalarField3"  \
-		-package	"hxscriptobj" \
-		-category	"Export" \
+
+
+module 	-name 		"ExportMhd" 			\
+		-primary	"HxUniformScalarField3"	\
+		-package	"hxscriptobj" 			\
+		-category	"Export" 				\
 		-proc {
 			set mod [[create HxScriptObject] setLabel "ExportMhd"]
-			$mod script setValue  $ExportMhd_scro 
+			$mod script setValue  $scro 
 			$mod fire
 			$PRIMARY deselect 
 		}
