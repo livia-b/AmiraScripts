@@ -126,7 +126,6 @@ proc readmhdfile {mhdfile} {
     if {$notstdTransform == 1} {
         echo  "$loaded_data setTransform $xx $xy $xz 0 $yx $yy $yz 0 $zx $zy $zz 0 0 0 0 1"
         $loaded_data setTransform $xx $xy $xz 0 $yx $yy $yz 0 $zx $zy $zz 0 0 0 0 1
-        
     }
     
     return 1
@@ -165,14 +164,14 @@ proc writemhdfile {image mhdfile} {
             }
             
     }
-    
-    if {[scan [$image Datainfo getValue Content] "grayscale, 8-bit unsigned, min-max: %s"   intensityrange] == 1 } {
+    set pixelType  [lindex [split [$image  Datainfo getValue ] "," ]  1 ]
+    if {$pixelType == " 8-bit unsigned"} {
         set pixelType "MET_UCHAR"
-    } elseif {[scan [$image Datainfo getValue Content]  "grayscale, 16-bit signed, min-max: %s"   intensityrange] == 1} {
+    } elseif {$pixelType == " 16-bit signed"} {
         set pixelType "MET_SHORT"
     } else {
       echo "WARNING: writer does not implement this pixel type, fix manually in  $mhdfile ([$image Datainfo getValue Content])"
-        set pixelType "FIXME"
+
     }
     
     
